@@ -1,0 +1,46 @@
+# Ambiente de desarrollo
+.dart_tool/
+.idea/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.vs/
+.vscode/
+
+# Build files
+/build/
+/ios/Flutter/Generated.xcconfig
+/android/local.properties
+/android/key.properties
+/android/.idea/
+/android/.gradle/
+/android/gradlew
+/android/gradlew.bat
+/android/gradle/
+/android/gradle-wrapper.jar
+/android/app/build/
+/android/app/src/debug/
+/android/app/src/release/
+/android/app/src/profile/
+
+# Archivos de la aplicación
+*.apk
+*.aab
+*.json
+*.log
+*.lock
+*.iso
+*.iso.log
+*.jar
+*.keystore
+*.sksl.json
+/android/
+/ios/
+
+# Archivos de dependencia
+.pub-cache/
+/pubspec.lock
+/web/
+/windows/
+/macos/
+/linux/
