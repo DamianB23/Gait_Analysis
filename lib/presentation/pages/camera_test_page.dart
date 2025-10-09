@@ -29,7 +29,7 @@ class _CameraTestPageState extends State<CameraTestPage> {
       return;
     }
 
-    // Usar la primera cámara disponible (generalmente la trasera)
+    // Usar la primera cámara disponible (generalmente la trasera (0))
     final CameraDescription camera = cameras[0];
 
     _controller = CameraController(

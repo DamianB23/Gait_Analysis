@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'GAIT ANALYSIS PROTOTYPE',
-      home: MyHomePage(title: 'screen'),
+      title: 'GAIT ANALYSIS ',
+      home: HomePage(),
     );
   }
 }
