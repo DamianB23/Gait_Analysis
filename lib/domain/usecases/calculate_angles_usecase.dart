@@ -1,5 +1,3 @@
-// lib/domain/usecases/calculate_angles_usecase.dart
-
 import 'package:google_mlkit_pose_detection/google_mlkit_pose_detection.dart';
 import 'dart:math';
 import '../entities/angles.dart';

@@ -1,4 +1,5 @@
 import 'package:bmapp/presentation/pages/analysis_page.dart';
+import 'package:bmapp/presentation/pages/vertical_jump_analysis_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Para Numeric Input
 //import 'analysis_page.dart'; // Asegúrate de que este import sea correcto
@@ -49,37 +50,18 @@ class _HomePageState extends State<HomePage> {
   void _startVerticalJumpAnalysis() {
     // Aquí podrías agregar lógica si el Salto Vertical también necesita una ID
 
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => const VerticalJumpPage()),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => VerticalJumpAnalysisPage()),
+    );
 
     // Temporalmente, usa un AlertDialog si la página no está creada
-    showDialog(
-      context: context,
-      builder:
-          (context) => AlertDialog(
-            title: const Text('Análisis de Salto'),
-            content: const Text(
-              'Navegar a la pantalla de Medición de Salto Vertical (VerticalJumpPage)',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('OK'),
-              ),
-            ],
-          ),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('GAIT ANALYSIS - Menú Principal'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('GAIT ANALYSIS DB'), centerTitle: true),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -109,7 +91,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               const Text(
-                '1. Análisis de Marcha (Gait Analysis)',
+                '1. Gait Analysis',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 15),
@@ -118,12 +100,12 @@ class _HomePageState extends State<HomePage> {
               TextFormField(
                 controller: _controller.identificationController,
                 decoration: const InputDecoration(
-                  labelText: 'Identificación del Paciente',
+                  labelText: 'Patient ID',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Por favor, ingrese la identificación.';
+                    return 'Please enter a valid ID.';
                   }
                   return null;
                 },
@@ -134,7 +116,7 @@ class _HomePageState extends State<HomePage> {
               TextFormField(
                 controller: _controller.sessionController,
                 decoration: const InputDecoration(
-                  labelText: 'Número de Sesión',
+                  labelText: 'Session Number',
                   border: OutlineInputBorder(),
                   hintText: 'Ej: 1, 2, 3...',
                 ),
@@ -144,10 +126,10 @@ class _HomePageState extends State<HomePage> {
                 ], // Solo números
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Por favor, ingrese el número de sesión.';
+                    return 'Please enter a session number.';
                   }
                   if (int.tryParse(value) == null || int.parse(value) <= 0) {
-                    return 'Debe ser un número entero positivo.';
+                    return 'Muast be a positive integer.';
                   }
                   return null;
                 },
@@ -159,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: _startGaitAnalysis,
                 icon: const Icon(Icons.directions_walk),
                 label: const Text(
-                  'Iniciar Análisis de Marcha',
+                  'Start Gait Analysis',
                   style: TextStyle(fontSize: 16),
                 ),
                 style: ElevatedButton.styleFrom(
@@ -182,7 +164,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             const Text(
-              '2. Medición de Salto Vertical',
+              '2. Vertical Jump Measurement',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 15),
@@ -192,7 +174,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: _startVerticalJumpAnalysis,
               icon: const Icon(Icons.height),
               label: const Text(
-                'Medir Distancia de Salto Vertical',
+                'Measure Vertical Jump',
                 style: TextStyle(fontSize: 16),
               ),
               style: ElevatedButton.styleFrom(
